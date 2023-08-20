@@ -48,6 +48,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3981094664003006237, guid: e3a6d03c0eacadd4282604e806c3cdb3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab9a38a746859a948b7408d1196fabd1, type: 2}
+    - target: {fileID: 4230576857358703650, guid: e3a6d03c0eacadd4282604e806c3cdb3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab9a38a746859a948b7408d1196fabd1, type: 2}
+    - target: {fileID: 4230576857358703650, guid: e3a6d03c0eacadd4282604e806c3cdb3, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 986c5e0e9ebd6204a9e194c9587f8ebe, type: 2}
+    - target: {fileID: 5609463180125333784, guid: e3a6d03c0eacadd4282604e806c3cdb3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab9a38a746859a948b7408d1196fabd1, type: 2}
+    - target: {fileID: 5609463180125333784, guid: e3a6d03c0eacadd4282604e806c3cdb3, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 986c5e0e9ebd6204a9e194c9587f8ebe, type: 2}
     - target: {fileID: 8225783065812185640, guid: e3a6d03c0eacadd4282604e806c3cdb3, type: 3}
       propertyPath: m_Name
       value: FruitApple
