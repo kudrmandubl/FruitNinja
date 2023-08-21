@@ -1,8 +1,11 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class FruitSpawner : MonoBehaviour
 {
-    public GameObject FruitPrefab;
+    public GameObject FruitPrefab0;
+    public GameObject FruitPrefab1;
+    public GameObject FruitPrefab2;
 
     public float MinDelay = 0.2f;
     public float MaxDelay = 0.9f;
@@ -41,9 +44,26 @@ public class FruitSpawner : MonoBehaviour
     private void SpawnFruit()
     {
         Quaternion startRotation = Quaternion.Euler(0f, 0f, Random.Range(-AngleRangeZ, AngleRangeZ));
-        GameObject newFruit = Instantiate(FruitPrefab, transform.position, startRotation);
+        GameObject newFruit = Instantiate(GetRandomFruitPrefab(), transform.position, startRotation);
         Destroy(newFruit, LifeTime);
         AddForce(newFruit);
+    }
+
+    private GameObject GetRandomFruitPrefab()
+    {
+        int r = Random.Range(0, 3);
+        if(r == 0)
+        {
+            return FruitPrefab0;
+        }
+        else if (r == 1)
+        {
+            return FruitPrefab1;
+        }
+        else 
+        {
+            return FruitPrefab2;
+        }
     }
 
     private void AddForce(GameObject fruit)
