@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class Slicer : MonoBehaviour
 {
     private const float MinSlicingMove = 0.01f;
+    private const float SliceForce = 65;
 
     private Collider _slicerTrigger;
     private Camera _mainCamera;
@@ -94,7 +95,7 @@ public class Slicer : MonoBehaviour
             return;
         }
 
-        fruit.Slice(_direction);
+        fruit.Slice(_direction, transform.position, SliceForce);
     }
 
 }
