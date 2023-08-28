@@ -50,8 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Whole: {fileID: 3188351659838639816}
   Sliced: {fileID: 3641867612134274335}
-  TopPart: {fileID: 4401316665162376334}
-  BottomPart: {fileID: 1643037942471988853}
+  TopPartRigidbody: {fileID: 1920250025867452857}
+  BottomPartRigidbody: {fileID: 7289015110286951279}
 --- !u!135 &5196329775201543954
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -71,7 +71,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &892740426086972705
 Rigidbody:
