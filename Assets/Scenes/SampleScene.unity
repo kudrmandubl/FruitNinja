@@ -492,6 +492,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1249676114}
   - component: {fileID: 1249676113}
+  - component: {fileID: 1249676115}
   m_Layer: 0
   m_Name: FruitSpawner
   m_TagString: Untagged
@@ -520,6 +521,7 @@ MonoBehaviour:
   LifeTime: 7
   MinForce: 6
   MaxForce: 11
+  _spawnZone: {fileID: 0}
 --- !u!4 &1249676114
 Transform:
   m_ObjectHideFlags: 0
@@ -535,6 +537,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1249676115
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249676112}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 8, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1737721112
 GameObject:
   m_ObjectHideFlags: 0

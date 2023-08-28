@@ -15,10 +15,17 @@ public class FruitSpawner : MonoBehaviour
     public float MaxForce = 25f;
 
     private float _currentDelay = 0;
+    [SerializeField] private Collider _spawnZone;
 
     private void Start()
     {
+        FillComponents();
         SetNewDelay();
+    }
+
+    private void FillComponents()
+    {
+        _spawnZone = GetComponent<Collider>();
     }
 
     private void SetNewDelay()
@@ -43,10 +50,20 @@ public class FruitSpawner : MonoBehaviour
 
     private void SpawnFruit()
     {
+        Vector3 startPosition = GetRandomSpawnPosition();
         Quaternion startRotation = Quaternion.Euler(0f, 0f, Random.Range(-AngleRangeZ, AngleRangeZ));
-        GameObject newFruit = Instantiate(GetRandomFruitPrefab(), transform.position, startRotation);
+        GameObject newFruit = Instantiate(GetRandomFruitPrefab(), startPosition, startRotation);
         Destroy(newFruit, LifeTime);
         AddForce(newFruit);
+    }
+
+    private Vector3 GetRandomSpawnPosition()
+    {
+        Vector3 pos;
+        pos.x = Random.Range(_spawnZone.bounds.min.x, _spawnZone.bounds.max.x);
+        pos.y = Random.Range(_spawnZone.bounds.min.y, _spawnZone.bounds.max.y);
+        pos.z = Random.Range(_spawnZone.bounds.min.z, _spawnZone.bounds.max.z);
+        return pos;
     }
 
     private GameObject GetRandomFruitPrefab()
