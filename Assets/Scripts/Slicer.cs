@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Slicer : MonoBehaviour
 {
@@ -11,7 +8,6 @@ public class Slicer : MonoBehaviour
     private Collider _slicerTrigger;
     private Camera _mainCamera;
 
-    private bool _isSlicing;
     private Vector3 _direction;
 
     private void Start()
@@ -46,7 +42,6 @@ public class Slicer : MonoBehaviour
 
     private void SetSlicing(bool value)
     {
-        _isSlicing = value;
         SetActiveTrigger(value);
     }
     private void SetActiveTrigger(bool value)
