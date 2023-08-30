@@ -53,7 +53,7 @@ public class Slicer : MonoBehaviour
         RefreshDirection(targetPosition);
         MoveSlicer(targetPosition);
 
-        bool isSlicing = CheckMoreThenMinMove(_direction);
+        bool isSlicing = CheckMoreThanMinMove(_direction);
         SetSlicing(isSlicing);
     }
 
@@ -74,7 +74,7 @@ public class Slicer : MonoBehaviour
         transform.position = targetPosition;
     }
 
-    private bool CheckMoreThenMinMove(Vector3 direction)
+    private bool CheckMoreThanMinMove(Vector3 direction)
     {
         float deltaPosition = direction.magnitude / Time.deltaTime;
         return deltaPosition >= MinSlicingMove;
