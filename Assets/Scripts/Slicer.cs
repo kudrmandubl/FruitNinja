@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class Slicer : MonoBehaviour
 {
+    public float SliceForce = 65;
+
     private const float MinSlicingMove = 0.01f;
-    private const float SliceForce = 65;
 
     private Collider _slicerTrigger;
     private Camera _mainCamera;
@@ -41,10 +42,6 @@ public class Slicer : MonoBehaviour
     }
 
     private void SetSlicing(bool value)
-    {
-        SetActiveTrigger(value);
-    }
-    private void SetActiveTrigger(bool value)
     {
         _slicerTrigger.enabled = value;
     }

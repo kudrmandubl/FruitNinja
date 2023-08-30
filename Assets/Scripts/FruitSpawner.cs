@@ -14,7 +14,7 @@ public class FruitSpawner : MonoBehaviour
     public float MaxForce = 25f;
 
     private float _currentDelay = 0;
-    [SerializeField] private Collider _spawnZone;
+    private Collider _spawnZone;
 
     private void Start()
     {
