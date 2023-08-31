@@ -82,7 +82,8 @@ public class Slicer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.TryGetComponent<Fruit>(out Fruit fruit))
+        Fruit fruit = other.GetComponent<Fruit>();
+        if (fruit == null) // тут можно было написать if(!fruit)
         {
             return;
         }
