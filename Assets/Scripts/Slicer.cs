@@ -4,7 +4,7 @@ public class Slicer : MonoBehaviour
 {
     public float SliceForce = 65;
 
-    private const float MinSlicingMove = 0.01f;
+    private const float MinSlicingSpeed = 0.01f;
 
     private Collider _slicerTrigger;
     private Camera _mainCamera;
@@ -76,8 +76,8 @@ public class Slicer : MonoBehaviour
 
     private bool CheckMoreThanMinMove(Vector3 direction)
     {
-        float deltaPosition = direction.magnitude / Time.deltaTime;
-        return deltaPosition >= MinSlicingMove;
+        float slicingSpeed = direction.magnitude / Time.deltaTime;
+        return slicingSpeed >= MinSlicingSpeed;
     }
 
     private void OnTriggerEnter(Collider other)
