@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Slicer : MonoBehaviour
 {
+    public Score Score;
+    public Health Health;
+
     public float SliceForce = 65;
 
     private const float MinSlicingSpeed = 0.01f;
@@ -82,6 +85,12 @@ public class Slicer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        CheckFriut(other);
+        CheckBomb(other);
+    }
+
+    private void CheckFriut(Collider other)
+    {
         Fruit fruit = other.GetComponent<Fruit>();
         if (fruit == null) // тут можно было написать if(!fruit)
         {
@@ -89,6 +98,19 @@ public class Slicer : MonoBehaviour
         }
 
         fruit.Slice(_direction, transform.position, SliceForce);
+        Score.AddScore(1);
+    }
+
+    private void CheckBomb(Collider other)
+    {
+        Bomb bomb = other.GetComponent<Bomb>();
+        if (bomb == null) // тут можно было написать if(!bomb)
+        {
+            return;
+        }
+
+        Destroy(bomb.gameObject);
+        Health.RemoveHealth();
     }
 
 }

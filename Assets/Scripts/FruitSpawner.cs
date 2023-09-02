@@ -6,12 +6,16 @@ public class FruitSpawner : MonoBehaviour
     public GameObject FruitPrefab1;
     public GameObject FruitPrefab2;
 
+    public GameObject BombPrefab;
+
     public float MinDelay = 0.2f;
     public float MaxDelay = 0.9f;
     public float AngleRangeZ = 20;
     public float LifeTime = 7f;
     public float MinForce = 15f;
     public float MaxForce = 25f;
+
+    public float BombChance = 0.1f;
 
     private float _currentDelay = 0;
     private Collider _spawnZone;
@@ -42,16 +46,34 @@ public class FruitSpawner : MonoBehaviour
         _currentDelay -= Time.deltaTime;
         if(_currentDelay < 0)
         {
-            SpawnFruit();
+            float random = Random.value;
+            if (random < BombChance)
+            {
+                SpawnBomb();
+            }
+            else
+            {
+                SpawnFruit();
+            }
             SetNewDelay();
         }
     }
 
     private void SpawnFruit()
     {
+        SpawnObject(GetRandomFruitPrefab());
+    }
+
+    private void SpawnBomb()
+    {
+        SpawnObject(BombPrefab);
+    }
+
+    private void SpawnObject(GameObject prefab)
+    {
         Vector3 startPosition = GetRandomSpawnPosition();
         Quaternion startRotation = Quaternion.Euler(0f, 0f, Random.Range(-AngleRangeZ, AngleRangeZ));
-        GameObject newFruit = Instantiate(GetRandomFruitPrefab(), startPosition, startRotation);
+        GameObject newFruit = Instantiate(prefab, startPosition, startRotation);
         Destroy(newFruit, LifeTime);
         AddForce(newFruit);
     }
