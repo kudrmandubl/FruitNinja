@@ -1,11 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class Health : MonoBehaviour
 {
     public int StartHealth = 3;
 
-    private Text _healthText;
+    private TextMeshProUGUI _healthText;
     private int _currentHealth;
 
     public void RemoveHealth()
@@ -21,7 +21,7 @@ public class Health : MonoBehaviour
 
     private void FillComponents()
     {
-        _healthText = GetComponentInChildren<Text>();
+        _healthText = GetComponentInChildren<TextMeshProUGUI>();
     }
 
     private void SetHealth(int value)

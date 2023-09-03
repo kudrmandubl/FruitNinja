@@ -1,8 +1,9 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
+
 public class Score : MonoBehaviour
 {
-    private Text _scoreText;
+    private TextMeshProUGUI _scoreText;
     private int _score;
 
     public void AddScore(int value)
@@ -17,7 +18,7 @@ public class Score : MonoBehaviour
     }
     private void FillComponents()
     {
-        _scoreText = GetComponentInChildren<Text>();
+        _scoreText = GetComponentInChildren<TextMeshProUGUI>();
     }
 
     private void SetScore(int value)
