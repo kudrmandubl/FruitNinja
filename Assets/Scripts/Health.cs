@@ -28,7 +28,6 @@ public class Health : MonoBehaviour
     {
         _currentHealth = value;
         SetHealthText(value);
-        CheckHealthEnd(value);
     }
 
     private void SetHealthText(int value)
@@ -36,16 +35,4 @@ public class Health : MonoBehaviour
         _healthText.text = value.ToString();
     }
 
-    private void CheckHealthEnd(int health)
-    {
-        if (health <= 0)
-        {
-            HealthEnd();
-        }
-    }
-
-    private void HealthEnd()
-    {
-
-    }
 }

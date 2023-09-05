@@ -73,9 +73,9 @@ public class FruitSpawner : MonoBehaviour
     {
         Vector3 startPosition = GetRandomSpawnPosition();
         Quaternion startRotation = Quaternion.Euler(0f, 0f, Random.Range(-AngleRangeZ, AngleRangeZ));
-        GameObject newFruit = Instantiate(prefab, startPosition, startRotation);
-        Destroy(newFruit, LifeTime);
-        AddForce(newFruit);
+        GameObject newObject = Instantiate(prefab, startPosition, startRotation);
+        Destroy(newObject, LifeTime);
+        AddForce(newObject);
     }
 
     private Vector3 GetRandomSpawnPosition()
@@ -104,10 +104,10 @@ public class FruitSpawner : MonoBehaviour
         }
     }
 
-    private void AddForce(GameObject fruit)
+    private void AddForce(GameObject obj)
     {
         float force = Random.Range(MinForce, MaxForce);
-        fruit.GetComponent<Rigidbody>().AddForce(fruit.transform.up * force, ForceMode.Impulse);
+        obj.GetComponent<Rigidbody>().AddForce(obj.transform.up * force, ForceMode.Impulse);
 
     }
 }
