@@ -29,6 +29,6 @@ public class Score : MonoBehaviour
 
     private void SetScoreText(int value)
     {
-        _scoreText.text = value.ToString();
+        _scoreText.text = "Очки: " + value;
     }
 }
