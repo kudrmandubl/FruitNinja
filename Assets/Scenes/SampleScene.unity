@@ -155,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Score: {fileID: 764438709}
   Health: {fileID: 1504565792}
+  FruitSpawner: {fileID: 1249676113}
   SliceForce: 65
 --- !u!4 &467724522
 Transform:

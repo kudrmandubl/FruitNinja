@@ -18,7 +18,13 @@ public class FruitSpawner : MonoBehaviour
     public float BombChance = 0.1f;
 
     private float _currentDelay = 0;
+    private bool _isActive = true;
     private Collider _spawnZone;
+
+    public void Stop()
+    {
+        _isActive = false;
+    }
 
     private void Start()
     {
@@ -38,6 +44,10 @@ public class FruitSpawner : MonoBehaviour
 
     private void Update()
     {
+        if (!_isActive)
+        {
+            return;
+        }
         MoveDelay();
     }
 

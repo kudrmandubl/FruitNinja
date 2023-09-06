@@ -4,6 +4,7 @@ public class Slicer : MonoBehaviour
 {
     public Score Score;
     public Health Health;
+    public FruitSpawner FruitSpawner;
 
     public float SliceForce = 65;
 
@@ -111,6 +112,20 @@ public class Slicer : MonoBehaviour
 
         Destroy(bomb.gameObject);
         Health.RemoveHealth();
+        CheckHealthEnd(Health.GetCurrentHealth());
     }
 
+    private void CheckHealthEnd(int health)
+    {
+        if(health > 0)
+        {
+            return;
+        }
+        StopGame();
+    }
+
+    private void StopGame()
+    {
+        FruitSpawner.Stop();
+    }
 }
