@@ -26,6 +26,12 @@ public class FruitSpawner : MonoBehaviour
         _isActive = false;
     }
 
+    public void Restart()
+    {
+        _isActive = true;
+        SetNewDelay();
+    }
+
     private void Start()
     {
         FillComponents();

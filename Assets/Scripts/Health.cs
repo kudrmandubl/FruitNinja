@@ -18,6 +18,11 @@ public class Health : MonoBehaviour
         return _currentHealth;
     }
 
+    public void Restart()
+    {
+        SetHealth(StartHealth);
+    }
+
     private void Start()
     {
         FillComponents();

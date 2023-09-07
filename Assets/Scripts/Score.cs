@@ -11,6 +11,16 @@ public class Score : MonoBehaviour
         SetScore(_score + value);
     }
 
+    public void Restart()
+    {
+        SetScore(0);
+    }
+
+    public int GetScore()
+    {
+        return _score;
+    }
+
     private void Start()
     {
         FillComponents();

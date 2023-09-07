@@ -4,7 +4,7 @@ public class Slicer : MonoBehaviour
 {
     public Score Score;
     public Health Health;
-    public FruitSpawner FruitSpawner;
+    public GameEnder GameEnder;
 
     public float SliceForce = 65;
 
@@ -126,6 +126,6 @@ public class Slicer : MonoBehaviour
 
     private void StopGame()
     {
-        FruitSpawner.Stop();
+        GameEnder.EndGame();
     }
 }
