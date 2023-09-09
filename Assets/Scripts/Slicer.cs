@@ -5,6 +5,7 @@ public class Slicer : MonoBehaviour
     public Score Score;
     public Health Health;
     public GameEnder GameEnder;
+    public SlicerComboChecker SlicerComboChecker;
 
     public float SliceForce = 65;
 
@@ -99,10 +100,13 @@ public class Slicer : MonoBehaviour
         }
 
         fruit.Slice(_direction, transform.position, SliceForce);
-        Score.AddScore(1);
+
+        SlicerComboChecker.IncreaseComboStep();
+        int scoreByFruit = 1 * SlicerComboChecker.GetComboMultiplier();
+        Score.AddScore(scoreByFruit);
     }
 
-    private void CheckBomb(Collider other)
+    private void CheckBomb(Collider other) 
     {
         Bomb bomb = other.GetComponent<Bomb>();
         if (bomb == null) // тут можно было написать if(!bomb)
@@ -111,6 +115,8 @@ public class Slicer : MonoBehaviour
         }
 
         Destroy(bomb.gameObject);
+
+        SlicerComboChecker.StopCombo();
         Health.RemoveHealth();
         CheckHealthEnd(Health.GetCurrentHealth());
     }
