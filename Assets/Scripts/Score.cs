@@ -3,8 +3,12 @@ using TMPro;
 
 public class Score : MonoBehaviour
 {
+    private const string BestScoreKey = "BestScore";
+
     private TextMeshProUGUI _scoreText;
     private int _score;
+    private int _bestScore;
+    private bool _isNewBestScore;
 
     public void AddScore(int value)
     {
@@ -21,10 +25,22 @@ public class Score : MonoBehaviour
         return _score;
     }
 
+    public int GetBestScore()
+    {
+        return _bestScore;
+    }
+
+    public void SetBestScore(int value)
+    {
+        _bestScore = value;
+        SaveBestScore(value);
+    }
+
     private void Start()
     {
         FillComponents();
         SetScore(0);
+        LoadBestScore();
     }
     private void FillComponents()
     {
@@ -40,5 +56,15 @@ public class Score : MonoBehaviour
     private void SetScoreText(int value)
     {
         _scoreText.text = "Очки: " + value;
+    }
+
+    private void LoadBestScore()
+    {
+        _bestScore = PlayerPrefs.GetInt(BestScoreKey);
+    }
+
+    private void SaveBestScore(int value)
+    {
+        PlayerPrefs.SetInt(BestScoreKey, value);
     }
 }

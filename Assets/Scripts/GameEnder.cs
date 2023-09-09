@@ -12,11 +12,12 @@ public class GameEnder : MonoBehaviour
     public GameObject GameEndScreen;
 
     public TextMeshProUGUI GameEndScoreText;
+    public TextMeshProUGUI BestScoreText;
 
     public void EndGame()
     {
         FruitSpawner.Stop();
-        SetGameEndScoreText(Score.GetScore());
+        RefreshScores();
         SwitchScreens(false);
     }
 
@@ -39,8 +40,46 @@ public class GameEnder : MonoBehaviour
         GameEndScreen.SetActive(!isGame);
     }
 
+    private void RefreshScores()
+    {
+        int score = Score.GetScore();
+        int oldBestScore = Score.GetBestScore();
+        bool isNewBestScore = CheckNewBestScore(score, oldBestScore);
+        SetActiveGameEndScoreText(!isNewBestScore);
+        if (isNewBestScore)
+        {
+            Score.SetBestScore(score);
+            SetNewBestScoreText(score);
+        }
+        else
+        {
+            SetGameEndScoreText(score);
+            SetOldBestScoreText(oldBestScore);
+        }
+    }
+
+    private bool CheckNewBestScore(int score, int oldBestScore)
+    {
+        return score > oldBestScore;
+    }
+
     private void SetGameEndScoreText(int value)
     {
-        GameEndScoreText.text = $"Ты набрал {value} Очков!";
+        GameEndScoreText.text = $"Ты набрал {value}!";
+    }
+
+    private void SetOldBestScoreText(int value)
+    {
+        BestScoreText.text = $"Лучший результат {value}";
+    }
+
+    private void SetNewBestScoreText(int value)
+    {
+        BestScoreText.text = $"Новый рекорд: {value}!";
+    }
+
+    private void SetActiveGameEndScoreText(bool value)
+    {
+        GameEndScoreText.gameObject.SetActive(value);
     }
 }
