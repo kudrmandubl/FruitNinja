@@ -7,6 +7,7 @@ public class GameEnder : MonoBehaviour
     public Score Score;
     public Health Health;
     public FruitSpawner FruitSpawner;
+    public Randomizer Randomizer;
 
     public GameObject GameScreen;
     public GameObject GameEndScreen;
@@ -18,11 +19,12 @@ public class GameEnder : MonoBehaviour
     {
         FruitSpawner.Stop();
         RefreshScores();
-        SwitchScreens(false);
+        SwitchScreens(false); 
     }
 
     public void RestartGame()
     {
+        Randomizer.Restart();
         Score.Restart();
         Health.Restart();
         FruitSpawner.Restart();
