@@ -1232,6 +1232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1249676114}
   - component: {fileID: 1249676113}
+  - component: {fileID: 1249676116}
   - component: {fileID: 1249676115}
   m_Layer: 0
   m_Name: FruitSpawner
@@ -1256,13 +1257,15 @@ MonoBehaviour:
   FruitPrefab1: {fileID: 5195396478487958399, guid: 2f5062086609f814ab5e7fa038122e1d, type: 3}
   FruitPrefab2: {fileID: 4598504820890764975, guid: 993f2153133153440ace99ca345cafcc, type: 3}
   BombPrefab: {fileID: 7529296249445382312, guid: 9b8b622430849de4b8ed634ce6ccad66, type: 3}
+  DifficultyChanger: {fileID: 1249676116}
   MinDelay: 0.2
   MaxDelay: 0.9
   AngleRangeZ: 20
   LifeTime: 7
   MinForce: 6
   MaxForce: 11
-  BombChance: 0.1
+  MinBombChance: 0.1
+  MaxBombChance: 0.25
 --- !u!4 &1249676114
 Transform:
   m_ObjectHideFlags: 0
@@ -1299,6 +1302,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 8, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1249676116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249676112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5682e9ceaa7f64da2f45d2e7f73972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Difficult: 2
 --- !u!1 &1251675207
 GameObject:
   m_ObjectHideFlags: 0

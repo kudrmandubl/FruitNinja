@@ -7,6 +7,7 @@ public class FruitSpawner : MonoBehaviour
     public GameObject FruitPrefab2;
 
     public GameObject BombPrefab;
+    public DifficultyChanger DifficultyChanger;
 
     public float MinDelay = 0.2f;
     public float MaxDelay = 0.9f;
@@ -15,7 +16,8 @@ public class FruitSpawner : MonoBehaviour
     public float MinForce = 15f;
     public float MaxForce = 25f;
 
-    public float BombChance = 0.1f;
+    public float MinBombChance = 0.1f;
+    public float MaxBombChance = 0.25f;
 
     private float _currentDelay = 0;
     private bool _isActive = true;
@@ -45,14 +47,14 @@ public class FruitSpawner : MonoBehaviour
 
     private void SetNewDelay()
     {
-        _currentDelay = Random.Range(MinDelay, MaxDelay);
+        _currentDelay = DifficultyChanger.CalculateRandomSpawnDelay(MinDelay, MaxDelay);
     }
 
     private void Update()
     {
         if (!_isActive)
         {
-            return;
+            return; 
         }
         MoveDelay();
     }
@@ -63,7 +65,8 @@ public class FruitSpawner : MonoBehaviour
         if(_currentDelay < 0)
         {
             float random = Random.value;
-            if (random < BombChance)
+            float bombChance = DifficultyChanger.CalculateBombChance(MinBombChance, MaxBombChance);
+            if (random < bombChance)
             {
                 SpawnBomb();
             }
