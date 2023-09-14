@@ -2,13 +2,11 @@ using UnityEngine;
 
 public class FruitSpawner : MonoBehaviour
 {
-
     public GameObject FruitPrefab0;
     public GameObject FruitPrefab1;
     public GameObject FruitPrefab2;
 
     public GameObject BombPrefab;
-    public Randomizer Randomizer;
 
     public float MinDelay = 0.2f;
     public float MaxDelay = 0.9f;
@@ -47,7 +45,7 @@ public class FruitSpawner : MonoBehaviour
 
     private void SetNewDelay()
     {
-        _currentDelay = Randomizer.GetRandomFloat(MinDelay, MaxDelay);
+        _currentDelay = Random.Range(MinDelay, MaxDelay);
     }
 
     private void Update()
@@ -64,7 +62,7 @@ public class FruitSpawner : MonoBehaviour
         _currentDelay -= Time.deltaTime;
         if(_currentDelay < 0)
         {
-            float random = Randomizer.GetRandomFloat();
+            float random = Random.value;
             if (random < BombChance)
             {
                 SpawnBomb();
@@ -90,7 +88,7 @@ public class FruitSpawner : MonoBehaviour
     private void SpawnObject(GameObject prefab)
     {
         Vector3 startPosition = GetRandomSpawnPosition();
-        Quaternion startRotation = Quaternion.Euler(0f, 0f, Randomizer.GetRandomFloat(-AngleRangeZ, AngleRangeZ));
+        Quaternion startRotation = Quaternion.Euler(0f, 0f, Random.Range(-AngleRangeZ, AngleRangeZ));
         GameObject newObject = Instantiate(prefab, startPosition, startRotation);
         Destroy(newObject, LifeTime);
         AddForce(newObject);
@@ -99,15 +97,15 @@ public class FruitSpawner : MonoBehaviour
     private Vector3 GetRandomSpawnPosition()
     {
         Vector3 pos;
-        pos.x = Randomizer.GetRandomFloat(_spawnZone.bounds.min.x, _spawnZone.bounds.max.x);
-        pos.y = Randomizer.GetRandomFloat(_spawnZone.bounds.min.y, _spawnZone.bounds.max.y);
-        pos.z = Randomizer.GetRandomFloat(_spawnZone.bounds.min.z, _spawnZone.bounds.max.z);
+        pos.x = Random.Range(_spawnZone.bounds.min.x, _spawnZone.bounds.max.x);
+        pos.y = Random.Range(_spawnZone.bounds.min.y, _spawnZone.bounds.max.y);
+        pos.z = Random.Range(_spawnZone.bounds.min.z, _spawnZone.bounds.max.z);
         return pos;
     }
 
     private GameObject GetRandomFruitPrefab()
     {
-        int r = Randomizer.GetRandomInt(0, 3);
+        int r = Random.Range(0, 3);
         if(r == 0)
         {
             return FruitPrefab0;
@@ -124,7 +122,7 @@ public class FruitSpawner : MonoBehaviour
 
     private void AddForce(GameObject obj)
     {
-        float force = Randomizer.GetRandomFloat(MinForce, MaxForce);
+        float force = Random.Range(MinForce, MaxForce);
         obj.GetComponent<Rigidbody>().AddForce(obj.transform.up * force, ForceMode.Impulse);
 
     }
