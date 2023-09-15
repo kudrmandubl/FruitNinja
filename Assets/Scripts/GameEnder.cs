@@ -7,6 +7,7 @@ public class GameEnder : MonoBehaviour
     public Score Score;
     public Health Health;
     public FruitSpawner FruitSpawner;
+    public DifficultyChanger DifficultyChanger;
 
     public GameObject GameScreen;
     public GameObject GameEndScreen;
@@ -23,6 +24,7 @@ public class GameEnder : MonoBehaviour
 
     public void RestartGame()
     {
+        DifficultyChanger.Restart();
         Score.Restart();
         Health.Restart();
         FruitSpawner.Restart();

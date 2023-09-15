@@ -414,6 +414,7 @@ MonoBehaviour:
   Score: {fileID: 764438709}
   Health: {fileID: 1504565792}
   FruitSpawner: {fileID: 1249676113}
+  DifficultyChanger: {fileID: 1249676116}
   GameScreen: {fileID: 675109035}
   GameEndScreen: {fileID: 1604069607}
   GameEndScoreText: {fileID: 1628555681}
@@ -854,6 +855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd72cb4b7556964a987b2eee940a577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DifficultyChanger: {fileID: 1249676116}
 --- !u!1 &816823195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1314,7 +1316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5682e9ceaa7f64da2f45d2e7f73972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Difficult: 2
+  DifficultyUpScoreStep: 30
 --- !u!1 &1251675207
 GameObject:
   m_ObjectHideFlags: 0

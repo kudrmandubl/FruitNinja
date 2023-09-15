@@ -3,6 +3,8 @@ using TMPro;
 
 public class Score : MonoBehaviour
 {
+    public DifficultyChanger DifficultyChanger;
+
     private const string BestScoreKey = "BestScore";
 
     private TextMeshProUGUI _scoreText;
@@ -51,6 +53,7 @@ public class Score : MonoBehaviour
     {
         _score = value;
         SetScoreText(value);
+        DifficultyChanger.SetDifficultByScore(value);
     }
 
     private void SetScoreText(int value)
