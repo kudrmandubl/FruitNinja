@@ -10,13 +10,25 @@ public class DifficultyChanger : MonoBehaviour
 
     public float CalculateRandomSpawnDelay(float minDelay, float maxDelay)
     {
+        // Получаем случайную задержку
         float randomDelay = Random.Range(minDelay, maxDelay);
-        return minDelay + (randomDelay - minDelay) * ((float)(MaxDifficult - _difficult) / MaxDifficult);
+        // Коэффициент сложности. От 0 до 1. Становится меньше, с увеличением сложности.
+        float difficultyCoef = (float)(MaxDifficult - _difficult) / MaxDifficult;
+        // Получаем разницу между случайным и минимальным значением Задержки
+        float delayDelta = randomDelay - minDelay;
+        // Разницу умножаем на коэффициент и получаем уменьшение значения Задержки от Максимального к Минимальному с увеличением сложности
+        // В итоге диапазон значения задержки уменьшается с увеличением сложности
+        return minDelay + delayDelta * difficultyCoef;
     }
 
     public float CalculateBombChance(float minChance, float maxChance)
-    { 
-        return minChance + (maxChance - minChance) *  ((float) _difficult / MaxDifficult);
+    {
+        // Коэффициент сложности. От 0 до 1. Становится больше, с увеличением сложности.
+        float difficultyCoef = (float) _difficult / MaxDifficult;
+        // Получаем разницу между максимальным и минимальным значением Шанса
+        float chanceDelta = maxChance - minChance;
+        // Разницу умножаем на коэффициент и получаем увеличение значения Шанса от Минимального к Максимальном с увеличением сложности
+        return minChance + chanceDelta * difficultyCoef;
     }
 
     public void Restart()
