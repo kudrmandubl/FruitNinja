@@ -21,14 +21,14 @@ public class DifficultyChanger : MonoBehaviour
         return minDelay + delayDelta * difficultyCoef;
     }
 
-    public float CalculateBombChance(float minChance, float maxChance)
+    public float CalculateBombWeight(float minWeight, float maxWeight)
     {
         // Коэффициент сложности. От 0 до 1. Становится больше, с увеличением сложности.
         float difficultyCoef = (float) _difficult / MaxDifficult;
-        // Получаем разницу между максимальным и минимальным значением Шанса
-        float chanceDelta = maxChance - minChance;
-        // Разницу умножаем на коэффициент и получаем увеличение значения Шанса от Минимального к Максимальном с увеличением сложности
-        return minChance + chanceDelta * difficultyCoef;
+        // Получаем разницу между максимальным и минимальным значением Веса
+        float weightDelta = maxWeight - minWeight;
+        // Разницу умножаем на коэффициент и получаем увеличение значения Веса от Минимального к Максимальном с увеличением сложности
+        return minWeight + weightDelta * difficultyCoef;
     }
 
     public void Restart()

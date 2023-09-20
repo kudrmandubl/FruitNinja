@@ -7,6 +7,8 @@ public class FruitSpawner : MonoBehaviour
     public GameObject FruitPrefab2;
 
     public GameObject BombPrefab;
+    public GameObject SandClocksPrefab;
+    public GameObject HeartPrefab;
     public DifficultyChanger DifficultyChanger;
 
     public float MinDelay = 0.2f;
@@ -16,8 +18,11 @@ public class FruitSpawner : MonoBehaviour
     public float MinForce = 15f;
     public float MaxForce = 25f;
 
-    public float MinBombChance = 0.1f;
-    public float MaxBombChance = 0.25f;
+    public float FruitWeight = 1f;
+    public float MinBombWeight = 0.1f;
+    public float MaxBombWeight = 0.25f;
+    public float SandClocksWeight = 0.04f;
+    public float HeartWeight = 0.02f;
 
     private float _currentDelay = 0;
     private bool _isActive = true;
@@ -64,18 +69,37 @@ public class FruitSpawner : MonoBehaviour
         _currentDelay -= Time.deltaTime;
         if(_currentDelay < 0)
         {
-            float random = Random.value;
-            float bombChance = DifficultyChanger.CalculateBombChance(MinBombChance, MaxBombChance);
-            if (random < bombChance)
-            {
-                SpawnBomb();
-            }
-            else
-            {
-                SpawnFruit();
-            }
+            GameObject prefab = GetPrefabByWeights();
+            SpawnObject(prefab);
             SetNewDelay();
         }
+    }
+
+    private GameObject GetPrefabByWeights()
+    {
+        float bombWeight = DifficultyChanger.CalculateBombWeight(MinBombWeight, MaxBombWeight);
+        float totalWeight = FruitWeight + bombWeight + SandClocksWeight + HeartWeight;
+        float random = Random.Range(0, totalWeight);
+
+        if (random <= bombWeight)
+        {
+            return BombPrefab;
+        }
+        random -= bombWeight;
+
+        if (random <= SandClocksWeight)
+        {
+            return SandClocksPrefab;
+        }
+        random -= SandClocksWeight;
+
+        if (random <= HeartWeight)
+        {
+            return HeartPrefab;
+        }
+        random -= HeartWeight;
+
+        return GetRandomFruitPrefab();
     }
 
     private void SpawnFruit()

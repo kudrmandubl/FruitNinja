@@ -13,6 +13,11 @@ public class Health : MonoBehaviour
         SetHealth(_currentHealth - 1);
     }
 
+    public void AddHeath(int value)
+    {
+        SetHealth(_currentHealth + value);
+    }
+
     public int GetCurrentHealth()
     {
         return _currentHealth;

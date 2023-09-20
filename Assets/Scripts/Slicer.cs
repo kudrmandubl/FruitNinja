@@ -6,6 +6,7 @@ public class Slicer : MonoBehaviour
     public Health Health;
     public GameEnder GameEnder;
     public SlicerComboChecker SlicerComboChecker;
+    public SlowMotion SlowMotion;
 
     public float SliceForce = 65;
 
@@ -89,6 +90,8 @@ public class Slicer : MonoBehaviour
     {
         CheckFriut(other);
         CheckBomb(other);
+        CheckSandClocks(other);
+        CheckHeart(other);
     }
 
     private void CheckFriut(Collider other)
@@ -120,6 +123,37 @@ public class Slicer : MonoBehaviour
         Health.RemoveHealth();
         CheckHealthEnd(Health.GetCurrentHealth());
     }
+
+    private void CheckSandClocks(Collider other)
+    {
+        SandClocks sandClocks = other.GetComponent<SandClocks>();
+        if (sandClocks == null)
+        {
+            return;
+        }
+
+        float slowDuration = sandClocks.SlowDuration; 
+        Destroy(sandClocks.gameObject);
+
+        SlicerComboChecker.IncreaseComboStep();
+        SlowMotion.StartSlow(slowDuration);
+    }
+
+    private void CheckHeart(Collider other)
+    {
+        Heart heart = other.GetComponentInParent<Heart>();
+        if (heart == null)
+        {
+            return;
+        }
+
+        int healthForHeart = heart.HealthForHeart;
+        Destroy(heart.gameObject);
+
+        SlicerComboChecker.IncreaseComboStep();
+        Health.AddHeath(healthForHeart);
+    }
+
 
     private void CheckHealthEnd(int health)
     {
