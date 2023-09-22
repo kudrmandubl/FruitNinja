@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde63864f150a8949984083be9185670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SliceParticles: {fileID: 86561307822928307, guid: 8c8812d98c9485e4f9dbbcad2dd925e9, type: 3}
   HealthForHeart: 1
 --- !u!54 &4433162218466679139
 Rigidbody:

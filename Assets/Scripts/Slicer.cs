@@ -159,6 +159,8 @@ public class Slicer : MonoBehaviour
             return;
         }
 
+        heart.ShowSliceParticles();
+
         int healthForHeart = heart.HealthForHeart;
         Destroy(heart.gameObject);
 
