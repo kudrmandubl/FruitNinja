@@ -9,10 +9,12 @@ public class SlicerComboChecker : MonoBehaviour
     public int ComboMultiplierIncreseStep = 3;
 
     private TextMeshProUGUI _comboMultiplierText;
+    private Animation _comboMultiplierAnimation;
 
     private float _comboTimer;
     private int _comboStep;
     private int _comboMultiplier;
+    private int _prevComboMultiplier;
 
     public void IncreaseComboStep()
     {
@@ -46,6 +48,16 @@ public class SlicerComboChecker : MonoBehaviour
         _comboMultiplier = 1 + comboStep / ComboMultiplierIncreseStep;
         SetComboMultiplierText(_comboMultiplier);
         SetComboMultiplierShow(_comboMultiplier);
+        ComboMultiplierIncreaseAnimation();
+    }
+
+    private void ComboMultiplierIncreaseAnimation()
+    {
+        if (_comboMultiplier > _prevComboMultiplier)
+        {
+            _comboMultiplierAnimation.Play(PlayMode.StopAll);
+        }
+        _prevComboMultiplier = _comboMultiplier;
     }
 
     private void Start()
@@ -58,6 +70,7 @@ public class SlicerComboChecker : MonoBehaviour
     private void FillComponents()
     {
         _comboMultiplierText = ComboMultiplierRootGO.GetComponentInChildren<TextMeshProUGUI>();
+        _comboMultiplierAnimation = ComboMultiplierRootGO.GetComponent<Animation>(); 
     }
 
     private void SetComboMultiplierText(int value)
