@@ -9,7 +9,7 @@ public class Slicer : MonoBehaviour
     public SlowMotion SlowMotion;
 
     public AudioClip ScoreSound;
-    public float ScoreSoundVolume = 0.55f;
+    public float ScoreSoundVolume = 0.45f;
     public AudioClip BombSound;
     public float BombSoundVolume = 0.3f;
     public AudioClip BonusSound;
