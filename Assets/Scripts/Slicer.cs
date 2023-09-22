@@ -8,12 +8,20 @@ public class Slicer : MonoBehaviour
     public SlicerComboChecker SlicerComboChecker;
     public SlowMotion SlowMotion;
 
+    public AudioClip ScoreSound;
+    public float ScoreSoundVolume = 0.55f;
+    public AudioClip BombSound;
+    public float BombSoundVolume = 0.3f;
+    public AudioClip BonusSound;
+    public float BonusSoundVolume = 0.7f;
+
     public float SliceForce = 65;
 
     private const float MinSlicingSpeed = 0.01f;
 
     private Collider _slicerTrigger;
     private Camera _mainCamera;
+    public AudioSource _soundPlayer;
 
     private Vector3 _direction;
 
@@ -26,6 +34,7 @@ public class Slicer : MonoBehaviour
     {
         _slicerTrigger = GetComponent<Collider>();
         _mainCamera = Camera.main;
+        _soundPlayer = GetComponentInChildren<AudioSource>();
 
         SetSlicing(false);
     }
@@ -107,6 +116,7 @@ public class Slicer : MonoBehaviour
         SlicerComboChecker.IncreaseComboStep();
         int scoreByFruit = 1 * SlicerComboChecker.GetComboMultiplier();
         Score.AddScore(scoreByFruit);
+        _soundPlayer.PlayOneShot(ScoreSound, ScoreSoundVolume);
     }
 
     private void CheckBomb(Collider other) 
@@ -122,6 +132,7 @@ public class Slicer : MonoBehaviour
         SlicerComboChecker.StopCombo();
         Health.RemoveHealth();
         CheckHealthEnd(Health.GetCurrentHealth());
+        _soundPlayer.PlayOneShot(BombSound, BombSoundVolume);
     }
 
     private void CheckSandClocks(Collider other)
@@ -137,6 +148,7 @@ public class Slicer : MonoBehaviour
 
         SlicerComboChecker.IncreaseComboStep();
         SlowMotion.StartSlow(slowDuration);
+        _soundPlayer.PlayOneShot(BonusSound, BonusSoundVolume);
     }
 
     private void CheckHeart(Collider other)
@@ -152,6 +164,7 @@ public class Slicer : MonoBehaviour
 
         SlicerComboChecker.IncreaseComboStep();
         Health.AddHeath(healthForHeart);
+        _soundPlayer.PlayOneShot(BonusSound, BonusSoundVolume);
     }
 
 

@@ -15,11 +15,15 @@ public class GameEnder : MonoBehaviour
     public TextMeshProUGUI GameEndScoreText;
     public TextMeshProUGUI BestScoreText;
 
+    public AudioSource BackgroundMusic;
+    public AudioSource GameOverSound;
+
     public void EndGame()
     {
         FruitSpawner.Stop();
         RefreshScores();
         SwitchScreens(false);
+        SwitchMusic(false);
     }
 
     public void RestartGame()
@@ -29,17 +33,32 @@ public class GameEnder : MonoBehaviour
         Health.Restart();
         FruitSpawner.Restart();
         SwitchScreens(true);
+        SwitchMusic(true);
     }
 
     private void Start()
     {
         SwitchScreens(true);
+        SwitchMusic(true);
     }
 
     private void SwitchScreens(bool isGame)
     {
         GameScreen.SetActive(isGame);
         GameEndScreen.SetActive(!isGame);
+    }
+
+    private void SwitchMusic(bool isGame)
+    {
+        if (isGame)
+        {
+            BackgroundMusic.Play();
+        }
+        else
+        {
+            BackgroundMusic.Stop();
+            GameOverSound.Play();
+        }
     }
 
     private void RefreshScores()
