@@ -146,6 +146,8 @@ public class Slicer : MonoBehaviour
             return;
         }
 
+        sandClocks.ShowSliceParticles();
+
         float slowDuration = sandClocks.SlowDuration; 
         Destroy(sandClocks.gameObject);
 

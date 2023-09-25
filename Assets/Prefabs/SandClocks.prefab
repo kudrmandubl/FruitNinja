@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee2d8e73bc062947b2c226e478f7ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SliceParticles: {fileID: 3964130793281065012, guid: 9ba4cf43f63eb86468bcb6aa5d2827b7, type: 3}
   SlowDuration: 3
 --- !u!33 &7139754690021777736
 MeshFilter:
