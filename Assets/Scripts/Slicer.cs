@@ -15,13 +15,15 @@ public class Slicer : MonoBehaviour
     public AudioClip BonusSound;
     public float BonusSoundVolume = 0.7f;
 
+    public Animation SplashAnimation;
+
     public float SliceForce = 65;
 
     private const float MinSlicingSpeed = 0.01f;
 
     private Collider _slicerTrigger;
     private Camera _mainCamera;
-    public AudioSource _soundPlayer;
+    private AudioSource _soundPlayer;
 
     private Vector3 _direction;
 
@@ -133,6 +135,7 @@ public class Slicer : MonoBehaviour
         Health.RemoveHealth();
         CheckHealthEnd(Health.GetCurrentHealth());
         _soundPlayer.PlayOneShot(BombSound, BombSoundVolume);
+        SplashAnimation.Play(PlayMode.StopAll);
     }
 
     private void CheckSandClocks(Collider other)
